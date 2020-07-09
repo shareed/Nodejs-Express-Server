@@ -8,7 +8,7 @@
 | `npm install --save-dev nodemon`     | *Automatically restarts the node application when file changes in the directory are detected* 
 | `npm install dotenv`     | *Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.*   
 | `npm install helmet --save`    | *Helps you secure your Express apps by setting various HTTP headers*    
-| git diff     | git diff       
+   
 
 
 * **Add scripts to package.json file**
