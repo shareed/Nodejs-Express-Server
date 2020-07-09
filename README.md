@@ -20,25 +20,29 @@
 * Use helmet
     * `server.use(helmet())`
 
-* **Add scripts to package.json file**
+**In the index.js file**  
+* Require dotenv and call the configure method on it `require('dotenv').config()`
+* Require the server.js file and set it to a variable
+    * `const server = require('./api/server.js');`
+* Create a get route
+* Configure the port to be dynamically read from .env file `const port =process.env.PORT;`
+    * Pass the port variale to where your server is listening
+    
+            server.listen(port, () => console.log(`\n*** Server Running on http://localhost:${port} ***\n`))
+* Create a .env file in the root of project
+    * Add `PORT=8000`
+    * *Be sure to add .env to the gitignore file*
+
+
+
+**Add scripts to package.json file**
 
         "scripts": {
             "start": "node index.js",
             "server": "nodemon index.js"
         }
+**Run `npm start` to start server**
 
- 
-
-* At the very top of the index.js file require dotenv and call the configure method on it `require('dotenv').config()`
-    * Configure the port to be dynamically read from .env file `const port =process.env.PORT;`
-    * Pass the port variale to where your server is listening
-    
-            server.listen(port, () => console.log(`\n*** Server Running on http://localhost:${port} ***\n`))
-* Create a .env file in the root of project
-    * Add `PORT=8000` 
-
-* Run `npm start` to start server
-* Be sure to add .env to the gitignore file
 
 
 
