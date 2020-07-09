@@ -3,9 +3,9 @@ const server = require('./api/server.js');
 
 
 
-
 server.get('/', (req, res) => {
-    res.send('HELLO, YOU HAVE ENTERED MY SERVER')
+    const messageOfTheDay = process.env.MOTD; // add this line
+    res.send(messageOfTheDay)
 })
 
 // server.listen(4000, () => console.log(`\n*** Server Running on http://localhost:4000 ***\n`))

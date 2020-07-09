@@ -35,7 +35,8 @@
 
 
 ### Deploying to Heroku
-* Applications need to support different enviornments
+* Create an app on [Heroku](https://www.heroku.com/)
+* Heroku looks for the start script in your package.json file in order to run the server, if you do not have it you will get a Application Error
 
 
 
