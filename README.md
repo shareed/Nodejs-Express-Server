@@ -37,6 +37,10 @@
 ### Deploying to Heroku
 * Create an app on [Heroku](https://www.heroku.com/)
 * Heroku looks for the start script in your package.json file in order to run the server, if you do not have it you will get a Application Error
+**Setting up environment variables on Heroku**
+* the .env file gets ignored when pushed to heroku, so heroku knows nothing about our environment variables, we must add them on heroku for them to work
+* Settings ---> Reveal Config Vars ---> Add your envirorment variables
+
 
 
 
