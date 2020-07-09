@@ -7,9 +7,18 @@
 | `npm install express`   | *Framework for node applications*
 | `npm install --save-dev nodemon`     | *Automatically restarts the node application when file changes in the directory are detected* 
 | `npm install dotenv`     | *Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.*   
-| `npm install helmet --save`    | *Helps you secure your Express apps by setting various HTTP headers*    
-   
+| `npm install helmet --save`    | *Helps you secure your Express apps by setting various HTTP headers*   
 
+
+**In the server.js file**  
+* Require express and helmet 
+    * `const express = require('express');`
+    * `const helmet = require('helmet');`
+* Create the express server and export it
+    * `const server = express();`
+    * `module.exports = server;`
+* Use helmet
+    * `server.use(helmet())`
 
 * **Add scripts to package.json file**
 
