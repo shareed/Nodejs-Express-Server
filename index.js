@@ -1,16 +1,25 @@
-const http = require('http'); // built in node.js module to handle http traffic
+require('dotenv').config()
+const server = require('./api/server.js');
 
-const hostname = '127.0.0.1'; // the local computer where the server is running
-const port = 3000; // a port we'll use to watch for traffic
 
-const server = http.createServer((req, res) => {
-  // creates our server
-  res.statusCode = 200; // http status code returned to the client
-  res.setHeader('Content-Type', 'text/plain'); // inform the client that we'll be returning text
-  res.end('Hello World from Node\n'); // end the request and send a response with the specified message
-});
 
-server.listen(port, hostname, () => {
-  // start watching for connections on the port specified
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+
+server.get('/', (req, res) => {
+    res.send('HELLO, YOU HAVE ENTERED MY SERVER')
+})
+
+// server.listen(4000, () => console.log(`\n*** Server Running on http://localhost:4000 ***\n`))
+
+//Making a port variable
+// const port = 4000;
+
+
+//Lets read the enviorment from nodejs
+//nodejs gives up a process object( where the nodejs applications is running)
+//process object has a property call env(a JS object), represents the environment, we can read from and add to the env
+//We are using this object to read the port dynamically from the enviorment, 
+//so we can change the port without having to change the source code
+const port =process.env.PORT; // the port is being read from the .env file
+
+
+server.listen(port, () => console.log(`\n*** Server Running on http://localhost:${port} ***\n`))
