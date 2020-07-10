@@ -16,8 +16,16 @@
             seeds: {
             directory: './data/seeds'
             } 
-* **Make a migration**
+**Make a migration**
     * `npx knex migrate:make create-hubs-table`
     * **migrate** `npx knex migrate:latest`
 * Migration files should not be changed after migration
 * `npx knex migrate:rollback` will delete the last migration
+
+
+**Knex seeds**
+* Sample data we can prepopulate into a database (test data)
+* Generate a seed file `npx seed:make 01-hubs`
+* Run Seeds `npx knex seed:run`
+* if you change the seed data it will reset the data
+* Use sqlite3 studio to see database
