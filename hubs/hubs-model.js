@@ -8,6 +8,7 @@ module.exports = {
   add,
   remove,
   update,
+  findHubMessages,
 };
 
 function find(query) {
@@ -44,4 +45,11 @@ function update(id, changes) {
   return db('hubs')
     .where({ id })
     .update(changes, '*');
+}
+
+function findHubMessages(hubId) {
+  return db('messages as m')
+    .join('hubs as h', 'm.hub_id', 'h.id')
+    .select('m.id', 'm.text', 'm.assignee', 'h.id as hubId', 'h.hubname as hub')
+    .where({ hub_id: hubId });
 }

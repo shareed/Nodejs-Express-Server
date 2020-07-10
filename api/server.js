@@ -3,13 +3,13 @@ const helmet = require('helmet');
 const shortid = require('shortid')
 
 const hubsRouter = require('../hubs/hubs-router.js');
-
+const messagesRouter = require('../messages/messages-router.js');
 
 const server = express();
 
 server.use(express.json())
 server.use('/api/hubs', hubsRouter); 
-
+server.use('/api/hubs/messages', messagesRouter); 
 server.use(helmet())
 
 
