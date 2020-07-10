@@ -29,3 +29,11 @@
 * Run Seeds `npx knex seed:run`
 * if you change the seed data it will reset the data
 * Use sqlite3 studio to see database
+
+
+
+**Express Router**
+[REPO](https://github.com/LambdaSchool/node-api2-guided-solution/blob/master/server.js)
+* Create a file to create a router in
+* Require express
+* Create a router using express Router `const router = express.Router();`
