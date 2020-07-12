@@ -17,3 +17,4 @@
 - npm install express-session
 - npm instal bcryptjs
 - https://github.com/LambdaSchool/node-auth1-guided/tree/lecture
+- https://www.youtube.com/watch?v=_Ust7c29YVc&feature=youtu.be
