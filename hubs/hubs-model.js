@@ -4,6 +4,7 @@ const db = knex(config.development);
 
 module.exports = {
   find,
+  findBy,
   findById,
   add,
   remove,
@@ -21,6 +22,10 @@ function find(query) {
     // .offset(offset);
 
   return rows;
+}
+
+function findBy(filter) {
+  return db("hubs").where(filter);
 }
 
 function findById(id) {

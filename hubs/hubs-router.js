@@ -54,7 +54,7 @@ router.get('/:id/messages', (req, res) => {
   });
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res, next) => {
   Hubs.add(req.body)
   .then(hub => {
     res.status(201).json(hub);

@@ -4,10 +4,36 @@ const shortid = require('shortid')
 
 const hubsRouter = require('../hubs/hubs-router.js');
 const messagesRouter = require('../messages/messages-router.js');
+const authRouter = require("../auth/auth-router.js");
+const session = require('express-session');
+const KnexSessionStore = require('connect-session-knex')(session);
 
 const server = express();
 
+
+const sessionConfig = {
+    name: 'sessionId',
+    secret: 'keep it secret, keep it safe!',
+    cookie: {
+      maxAge: 1000 * 60 * 60,
+      secure: false,   // https
+      httpOnly: true,  // when true, js can't get to the cookie
+    },
+    // we should only save sessions when user allows it
+    resave: false,
+    saveUninitialized: false,
+    store: new KnexSessionStore({
+      knex: require('../data/dbConfig.js'), // configured instance of knex
+      tablename: 'sessions', // table that will store sessions inside the db, name it anything you want
+      sidfieldname: 'sid', // column that will hold the session id, name it anything you want
+      createtable: true, // if the table does not exist, it will create it automatically
+      clearInterval: 1000 * 60 * 60, // time it takes to check for old sessions and remove them from the database to keep it clean and performant
+    }),
+  }
+  
+  server.use(session(sessionConfig))
 server.use(express.json())
+server.use("/auth", authRouter);
 server.use('/api/hubs', hubsRouter); 
 server.use('/api/hubs/messages', messagesRouter); 
 server.use(helmet())
