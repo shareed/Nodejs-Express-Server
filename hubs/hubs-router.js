@@ -1,6 +1,5 @@
 const express = require('express');
-
-const Hubs = require('./hubs-model.js');
+const restrict = require('../auth/restricted-middleware.js')
 const { getHubs, addHub, getHubById, validateId, requireBody, getHubMessagesByHubId,
         deleteHub, updateHub} = require('./hubs-router-functions.js')
 const router = express.Router();
@@ -11,6 +10,7 @@ router.use((req, res, next) => {
   next();
 })
 
+router.use(restrict);
 
 router.get('/', getHubs);
 
