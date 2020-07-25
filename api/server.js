@@ -1,5 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
+const cors = require('cors');
 const shortid = require('shortid')
 var morgan = require('morgan')
 
@@ -19,7 +20,9 @@ const server = express();
 server.use(express.json());
 
 
+
 //Third Party Middleware
+server.use(cors())
 server.use(helmet());
 server.use(morgan('dev'));
 
@@ -27,16 +30,16 @@ server.use(morgan('dev'));
 server.use(addName);
 // server.use(lockout);
 const sessionConfig = {
-  name: 'sessionId',
-  secret: 'keep it secret, keep it safe!',
+  name: 'monkey',
+  secret: 'keep it secret, keep it safe!',// used to make sure the cookie is valid
   cookie: {
-    maxAge: 1000 * 60 * 60,
-    secure: false,   // https
+    maxAge: 1000 * 30,// 30 seconds
+    secure: false,   // can i send cookie over a http connection, must be set to true during production, can be dynamically changed
     httpOnly: true,  // when true, js can't get to the cookie
   },
   // we should only save sessions when user allows it
-  resave: false,
-  saveUninitialized: false,
+  resave: false,// recreate session even if it has not change
+  saveUninitialized: false, //set cookie automatically, only be true if user has opted in, can be dynamically changed
   store: new KnexSessionStore({
     knex: require('../data/dbConfig.js'), // configured instance of knex
     tablename: 'sessions', // table that will store sessions inside the db, name it anything you want

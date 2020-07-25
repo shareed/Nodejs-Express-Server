@@ -35,6 +35,7 @@ router.post("/login", (req, res) => {
   Users.findBy({ hubname }).first()
     .then(user => {
       if (user && bc.compareSync(password, user.password)) {
+        
         // this means the username exists in the db AND password good
         // now we can save a session for this particular login
         req.session.hub = user
