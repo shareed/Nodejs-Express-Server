@@ -15,6 +15,7 @@ Express Routing
     * `npm install shortid`
     *  require shortid wherever you are creating your post endpoint `const shortid = require('shortid')`
     *  Create id for each hub when a post request is made using shortid
+    
             server.post('/api/hubs', (req, res) => {
             const hubInfo = req.body; //Gets the info from the user
             hubInfo.id = shortid.generate(); //setting the hubs id with the shortid module using its generate function
